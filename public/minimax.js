@@ -51,8 +51,8 @@
 		// does NOT change the original state, but 
 		// returns a new one.
 
-		var depth = 3
-		return max(allLegalMoves, function(move){
+		var depth = 1; /* originally 3 */
+		var moveToMake = max(allLegalMoves, function(move){
 			var potentialState = state.move(move)
 			return minimax(potentialState, depth, playerMoving)
 			//return minimaxAlphaBetaWrapper(potentialState, depth, playerMoving)
@@ -63,6 +63,8 @@
 		// according to the function passed into it.
 		// 
 		// So this function looks
+		console.log(moveToMake);
+		return moveToMake;
 	}
 
 	/*Max: Ancillary function.*/
@@ -103,11 +105,20 @@
 		var minimizingPlayer = (maximizingPlayer == 'x') ? 'o' : 'x';
 		//This is how you can retrieve the minimizing player.
 
-        var linesOfLengthTwoForX = state.numLines(2, 'x')
-        //An example 
+        // var linesOfLengthTwoForX = state.numLines(2, 'x');
+        // var linesOfLengthTwoForO = state.numLines(2, 'o');
+		var linesOfLengthTwoForMax;
+        var linesOfLengthTwoForMin;
 
-        //Your code here.  Don't return random, obviously.
-		return Math.random()
+        for( var i = 2; i < 4; i++){
+        	linesOfLengthTwoForMax += state.numLines(i, maximizingPlayer);
+        	linesOfLengthTwoForMin += state.numLines(i, minimizingPlayer);
+    	}
+       
+        //An example 
+        // If these are both the same we switched states
+
+        return linesOfLengthTwoForMax - linesOfLengthTwoForMin;
 	}
 
 
@@ -135,11 +146,18 @@
 	know, I believe.
 	*/
 	var minimax = function(state, depth, maximizingPlayer){
+
 		var minimizingPlayer = (state.maximizingPlayer == 'x') ? 'o' : 'x';
 		var possibleStates = state.nextStates();
 		var currentPlayer = state.nextMovePlayer;
+
+		if( depth === 0 || possibleStates.length == 0 )
+				return heuristic( state, maximizingPlayer);
+		
+
+		//var returnVal = Math.random();
 		//Your code here.
-		return Math.random();
+		return returnVal;
 	}
 
 

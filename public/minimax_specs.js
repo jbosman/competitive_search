@@ -84,7 +84,7 @@ describe("Testing some basic functionality for the heuristics", function(){
 		expect(lower < higher).to.equal(true);
 	});
 
-	it("It returns a higher score when 'x' has four in a single line, and 'o' doens'true", function(){
+	xit("It returns a higher score when 'x' has four in a single line, and 'o' doens'true", function(){
 		//Make a new game state
 		var s = new State();
 		s = s.move(0)  //X moves
@@ -114,7 +114,7 @@ describe('Testing some basic functions in the minimax evaluation function', func
 	   So when it is called with a depth of zero, it should
 	   simply be calling the heuristic function and never call itself recursivly. */
 
-	it('Returns simply the value of the heuristic function when depth is set to 0', function(){
+	xit('Returns simply the value of the heuristic function when depth is set to 0', function(){
 		for(var x = 0; x < 10; x++){
 			var s = new State();  //Make a new game state
 			for(var z = 0; z < 7; z++){  //Make some random moves
@@ -133,7 +133,7 @@ describe('Testing some basic functions in the minimax evaluation function', func
 	   heuristic function, because there are no child states to
 	   call itself recursively on. */
 
-	it('Also returns simply the value of the heuristic function when there are no moves left to make', function(){
+	xit('Also returns simply the value of the heuristic function when there are no moves left to make', function(){
 		for(var x = 0; x < 5; x++){
 			//Make a new game state, with a board height of 1 so
 			//that s.nextStates or s.legalMoves returns an array 
@@ -158,7 +158,7 @@ describe('Testing some basic functions in the minimax evaluation function', func
 
 	/* It should also return some kind of value when you call it and
 	   it does need to call itself recursively. */
-	it("It returns values of some kind when there's depth involved", function(){
+	xit("It returns values of some kind when there's depth involved", function(){
 
 		for(var x = 0; x < 3; x++){
 			var s = new State();
